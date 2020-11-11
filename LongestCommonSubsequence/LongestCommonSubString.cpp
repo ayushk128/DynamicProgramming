@@ -1,3 +1,4 @@
+//Longest common substring
 #include<bits/stdc++.h>
 using namespace std;
 int LCSubstring(string x, string y, int m, int n, int count)

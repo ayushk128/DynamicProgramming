@@ -1,3 +1,4 @@
+//Longest Common subsequence
 #include <bits/stdc++.h>
 using namespace std;
 int dp[1001][1001];
@@ -55,8 +56,8 @@ int LCSMemoizationTopDown(string x, string y, int m, int n)
 int main()
 {
     memset(dp, -1, sizeof(dp));
-    string x = "Ayush";
-    string y = "Anurag";
+    string x = "AGGTAB";
+    string y = "GXTXAYB";
 
     cout<<"With Recursion: "<<endl;
     cout<<LCSRecursive(x, y, x.length(), y.length())<<endl;;

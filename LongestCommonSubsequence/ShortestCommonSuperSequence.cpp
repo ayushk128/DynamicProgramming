@@ -1,10 +1,9 @@
-// Printing longest common substring
+// Printing the length of shortest common supersequence
 #include <bits/stdc++.h>
 using namespace std;
-string LCSPrint(string x, string y, int m, int n)
+int LCS(string x, string y, int m, int n)
 {
     int t[m + 1][n + 1];
-    string s;
     for (int i = 0; i < m + 1; i++)
     {
         for (int j = 0; j < n + 1; j++)
@@ -13,7 +12,6 @@ string LCSPrint(string x, string y, int m, int n)
                 t[i][j] = 0;
         }
     }
-
     for (int i = 1; i < m + 1; i++)
     {
         for (int j = 1; j < n + 1; j++)
@@ -24,30 +22,17 @@ string LCSPrint(string x, string y, int m, int n)
                 t[i][j] = max(t[i - 1][j], t[i][j - 1]);
         }
     }
-    int i = m;
-    int j = n;
-    while (i > 0 && j > 0)
-    {
-        if (x[i - 1] == y[j - 1])
-        {
-            s.push_back(x[i - 1]);
-            i--;
-            j--;
-        }
-        else
-        {
-            if (t[i][j - 1] > t[i - 1][j])
-                j--;
-            else
-                i--;
-        }
-    }
-    reverse(s.begin(), s.end());
-    return s;
+    return t[m][n];
+}
+int ShortestCommonSuperSequence(string x, string y)
+{
+    int m = x.length();
+    int n = y.length();
+    return m + n - LCS(x, y, m, n);
 }
 int main()
 {
     string x = "AGGTAB";
     string y = "GXTXAYB";
-    cout << LCSPrint(x, y, x.length(), y.length()) << endl;
+    cout << ShortestCommonSuperSequence(x, y) << endl;
 }
