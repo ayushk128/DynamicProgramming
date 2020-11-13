@@ -15,7 +15,6 @@ bool isPalindrome(string a, int start, int end)
             start++;
             end--;
         }
-        
     }
     return res;
 }
@@ -30,7 +29,7 @@ int PalindromePartitioningRecursive(string a, int i, int j)
     for (int k = i; k <= j - 1; k++)
     {
         int temp = 1 + PalindromePartitioningRecursive(a, i, k) + PalindromePartitioningRecursive(a, k + 1, j);
-        if(temp < mn)
+        if (temp < mn)
             mn = temp;
     }
     return mn;
